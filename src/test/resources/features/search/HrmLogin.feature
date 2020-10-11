@@ -1,51 +1,55 @@
 Feature: HRM login functionality
+  In this feature file we are testing login functionality for OrangeHRM application
+    with different combinations of Username and password
 
-   @Test01 @RegressionTest
-   Scenario: Validate login with valid username and password
+   @Test01 @LoginTests
+   Scenario: Validate user login with valid username and password
     Given I am on HRMLogin page
     And I enter Admin username and admin123 password
     When I click on login button
     Then Login should be successfull
 
-  @Test02 @RegressionTest
-  Scenario: Validate login with valid username and invalid password
+  @Test02 @LoginTests
+  Scenario: Validate user login with valid username and invalid password
     Given I am on HRMLogin page
     And I enter Admin username and admin1234 password
     When I click on login button
-    Then Login should be unsuccessfull
+    Then Login is unsuccessfull because of InvalidCredentials
 
-  @Test03 @RegressionTest
-  Scenario: Validate login with invalid username and valid password
+  @Test03 @LoginTests
+  Scenario: Validate user login with invalid username and valid password
     Given I am on HRMLogin page
     And I enter Admin1 username and admin123 password
     When I click on login button
-    Then Login should be unsuccessfull
+    Then Login is unsuccessfull because of InvalidCredentials
 
-  @Test04 @RegressionTest
-  Scenario: Validate login with wrong username and password
+  @Test04 @LoginTests
+  Scenario: Validate user login with wrong username and password
     Given I am on HRMLogin page
     And I enter Admin1 username and admin1234 password
     When I click on login button
-    Then Login should be unsuccessfull
+    Then Login is unsuccessfull because of InvalidCredentials
 
-  @Test05
+  @Test05 @LoginTests
   Scenario: Validate user login with empty username
     Given I am on HRMLogin page
-    And I enter empty username and admin123 password
+    And I enter blank username and admin123 password
     When I click on login button
-    Then Login should be successfull
+    Then Login is unsuccessfull because of BlankUsername
 
+  @Test06 @LoginTests
   Scenario: Validate user login with empty password
     Given I am on HRMLogin page
-    And I enter Admin username and empty password
+    And I enter Admin username and blank password
     When I click on login button
-    Then Login should be successfull
+    Then Login is unsuccessfull because of BlankPassword
 
-  Scenario: Validate user login with valid username and password
+  @Test07 @LoginTests
+  Scenario: Validate user login with blank username and blank password
     Given I am on HRMLogin page
-    And I enter Admin username and admin123 password
+    And I enter blank username and blank password
     When I click on login button
-    Then Login should be successfull
+    Then Login is unsuccessfull because of BlankUsername
 
 
 

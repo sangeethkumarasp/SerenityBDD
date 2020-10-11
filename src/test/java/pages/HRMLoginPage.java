@@ -24,18 +24,23 @@ public class HRMLoginPage extends PageObject {
                 loginButton.click();
         }
 
-        @FindBy(xpath="//a[contains(text(), 'Welcome')]")
-        WebElementFacade loginConfirmation;
-        public String confirmLogin(){
-               return loginConfirmation.getText();
-        }
-
         @FindBy(xpath="//span[contains(text(), 'Invalid credentials')]")
         WebElementFacade spanMessage;
-        public String loginError(){
+        public String loginErrorInvalidCredentials(){
             return spanMessage.getText();
         }
 
+        @FindBy(xpath="//span[contains(text(), 'Username cannot be empty')]")
+        WebElementFacade blankUsername;
+        public String loginErrorBlankUsername(){
+                return blankUsername.getText();
+        }
+
+        @FindBy(xpath="//span[contains(text(), 'Password cannot be empty')]")
+        WebElementFacade blankPassword;
+        public String loginErrorBlankPassword(){
+                return blankPassword.getText();
+        }
 }
 
 
